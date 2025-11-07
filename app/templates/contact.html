@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Chroma Premium | Επικοινωνία{% endblock %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container narrow">
+      <h1>Επικοινωνήστε μαζί μας</h1>
+      <p>Πείτε μας λίγα λόγια για το έργο σας και θα σας απαντήσουμε με προτάσεις και χρονοδιάγραμμα.</p>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container contact-grid">
+      <div>
+        <h2>Συμπληρώστε τη φόρμα</h2>
+        <form method="post" novalidate>
+          <label for="name">Όνομα *</label>
+          <input type="text" id="name" name="name" value="{{ form_data.get('name', '') }}" required />
+
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" value="{{ form_data.get('email', '') }}" required />
+
+          <label for="phone">Τηλέφωνο</label>
+          <input type="tel" id="phone" name="phone" value="{{ form_data.get('phone', '') }}" />
+
+          <label for="message">Περιγραφή έργου *</label>
+          <textarea id="message" name="message" rows="5" required>{{ form_data.get('message', '') }}</textarea>
+
+          <button class="btn" type="submit">Αποστολή</button>
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="flash-messages">
+              {% for category, message in messages %}
+                <p class="flash {{ category }}">{{ message }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+      </div>
+
+      <div class="contact-info">
+        <h2>Στοιχεία επικοινωνίας</h2>
+        <p>Είμαστε διαθέσιμοι για έργα σε Αθήνα, Θεσσαλονίκη και υπόλοιπη Ελλάδα κατόπιν συνεννόησης.</p>
+        <ul>
+          <li>Email: <a href="mailto:info@chromapremium.gr">info@chromapremium.gr</a></li>
+          <li>Τηλ.: <span class="muted">+30 6943480472</span></li>
+          <li>Ωράριο: Δευτέρα – Σάββατο, 08:00 – 18:00</li>
+        </ul>
+        <div class="map-placeholder">
+          <p>Χάρτης περιοχών εξυπηρέτησης<br />Θα προστεθεί σύντομα.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+

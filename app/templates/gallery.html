@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Chroma Premium | Gallery{% endblock %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container narrow">
+      <h1>Επόμενο βήμα: Το δικό σας έργο</h1>
+      <p>Η gallery μας ενημερώνεται με ολοκληρωμένα projects. Σύντομα θα βρείτε εδώ φωτογραφίες πριν και μετά, καθώς και αγαπημένες μας χρωματικές παλέτες.</p>
+    </div>
+  </section>
+
+  <section class="section gallery-placeholder">
+    <div class="container narrow">
+      <div class="placeholder">
+        <p>Οι φωτογραφίες μας ετοιμάζονται.</p>
+        <p>Μέχρι τότε, ας συζητήσουμε για το δικό σας project!</p>
+        <a class="btn" href="{{ url_for('main.contact') }}">Κλείστε ένα ραντεβού</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
