@@ -3,3 +3,4 @@
    *.pyc
    instance/
    .env
+.env
