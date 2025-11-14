@@ -57,6 +57,15 @@ main {
   flex: 1;
 }
 
+main:has(.page-hero) {
+  background:
+    linear-gradient(120deg, rgba(29, 53, 87, 0.6), rgba(69, 123, 157, 0.55)),
+    url("../images/photos/IMG_3237_.JPG") center/cover;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
 .container {
   width: min(1100px, 90vw);
   margin: 0 auto;
@@ -434,6 +443,7 @@ main {
   background-size: cover;
   background-position: center;
   text-align: center;
+  margin-bottom: 0;
 }
 
 .page-hero h1 {
@@ -456,6 +466,8 @@ main {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .section > .container > h2,
@@ -490,9 +502,15 @@ main {
 }
 
 .cta-banner {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  background:
+    linear-gradient(120deg, rgba(29, 53, 87, 0.6), rgba(69, 123, 157, 0.55)),
+    url("../images/photos/IMG_3237_.JPG") center/cover;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
   color: #fff;
   padding: 3.5rem 0;
+  margin-top: 0;
 }
 
 .banner-content {
@@ -500,6 +518,21 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
+}
+
+.banner-box {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 2.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
 }
 
 .banner-content p {
