@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import re
 from flask import Blueprint, Request, current_app, flash, redirect, render_template, request, url_for
 
@@ -31,7 +32,17 @@ def quality() -> str:
 
 @main.route("/gallery")
 def gallery() -> str:
-    return render_template("gallery.html")
+    photos_dir = os.path.join(current_app.static_folder, "images", "photos")
+    photos = []
+    
+    if os.path.exists(photos_dir):
+        # Get all image files from the photos directory
+        image_extensions = {".jpg", ".jpeg", ".png", ".gif", ".webp"}
+        for filename in sorted(os.listdir(photos_dir)):
+            if any(filename.lower().endswith(ext) for ext in image_extensions):
+                photos.append(filename)
+    
+    return render_template("gallery.html", photos=photos)
 
 
 @main.route("/contact", methods=["GET", "POST"])
