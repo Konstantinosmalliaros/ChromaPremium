@@ -27,7 +27,17 @@ def process() -> str:
 
 @main.route("/quality")
 def quality() -> str:
-    return render_template("quality.html")
+    # Marketplace reviews data from TexnitesOnline
+    marketplace_url = "https://www.texnitesonline.gr/controller/profile/show.php?as=homeTech&token=saltyLsalty5127bb2a425f9&tid=1132"
+    total_reviews = 25
+    review_screenshot = "marketplace-reviews.png"
+    
+    return render_template(
+        "quality.html",
+        marketplace_url=marketplace_url,
+        total_reviews=total_reviews,
+        review_screenshot=review_screenshot
+    )
 
 
 @main.route("/gallery")

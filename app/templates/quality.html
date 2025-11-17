@@ -31,17 +31,53 @@
     </div>
   </section>
 
+  <section class="section marketplace-reviews">
+    <div class="container narrow">
+      <h2>Αξιολογήσεις από texnitesonline.gr</h2>
+      <div class="reviews-display">
+        <div class="rating-badge">
+          <div class="stars-display">
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+          </div>
+          <div class="rating-text">
+            <span class="rating-value">5.0</span>
+            <span class="rating-count">({{ total_reviews }}+ αξιολογήσεις)</span>
+          </div>
+        </div>
+        {% if review_screenshot %}
+        <div class="review-screenshot">
+          <img src="{{ url_for('static', filename='images/' + review_screenshot) }}" alt="Marketplace Reviews" loading="lazy">
+        </div>
+        {% endif %}
+        <div class="review-link">
+          <a href="{{ marketplace_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-marketplace">
+            Δείτε όλες τις αξιολογήσεις
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section testimonials">
     <div class="container narrow">
       <h2>Τι λένε οι πελάτες μας</h2>
       <div class="testimonial-cards">
         <article>
-          <p>“Η ομάδα της Chroma Premium παρέδωσε τον χώρο μας έτοιμο προς χρήση, στην ώρα τους και με αποτέλεσμα που ξεπέρασε τις προσδοκίες μας.”</p>
-          <span class="author">Μ. Σταθόπουλος – Αθήνα</span>
+          <p>"Εξαιρετικός επαγγελματίας, έμεινα πολύ ευχαριστημένος. Θα τον ξανά προτιμήσω."</p>
+          <span class="author">ΜIoannis P. Ιανουάριος 2025 – ΒΡΙΛΗΣΙΑ, ΑΤΤΙΚΗΣ</span>
         </article>
         <article>
-          <p>“Άψογη συνεργασία, προσοχή στη λεπτομέρεια και διαρκής ενημέρωση. Τους προτείνουμε ανεπιφύλακτα.”</p>
-          <span class="author">Ε. Καραγιάννη – Θεσσαλονίκη</span>
+          <p>"Άριστος επαγγελματίας, έκανε εξαιρετική δουλειά, με συνέπεια στο χρόνο και απέναντι στον πελάτη. Τον συνιστώ ανεπιφύλακτα !!"</p>
+          <span class="author">ΑΓΓΕΛΙΚΗ Ρ. Δεκέμβριος 2024 – ΦΑΛΗΡΟ, ΑΤΤΙΚΗΣ</span>
         </article>
       </div>
     </div>
