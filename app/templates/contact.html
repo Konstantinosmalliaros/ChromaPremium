@@ -2,6 +2,10 @@
 
 {% block title %}Chroma Premium | Επικοινωνία{% endblock %}
 
+{% block meta_description %}Επικοινωνήστε με την Chroma Premium. Ζητήστε προσφορά για έργα βαφής. Email: info@chromapremium.gr | Τηλ: +30 6943480472{% endblock %}
+
+{% block og_description %}Επικοινωνήστε μαζί μας για δωρεάν επίσκεψη και αναλυτική προσφορά.{% endblock %}
+
 {% block content %}
   <section class="page-hero">
     <div class="container narrow">
@@ -12,22 +16,32 @@
 
   <section class="section contact-section">
     <div class="container contact-grid">
-      <div>
+      <div class="contact-form-wrapper">
         <h2>Συμπληρώστε τη φόρμα επικοινωνίας</h2>
+        <p class="form-intro">Συμπληρώστε τα παρακάτω στοιχεία και θα επικοινωνήσουμε μαζί σας το συντομότερο δυνατό για να συζητήσουμε τις ανάγκες του έργου σας.</p>
         <form method="post" novalidate>
-          <label for="name">Όνομα *</label>
-          <input type="text" id="name" name="name" value="{{ form_data.get('name', '') }}" required />
+          <div class="form-group">
+            <label for="name">Όνομα *</label>
+            <input type="text" id="name" name="name" value="{{ form_data.get('name', '') }}" placeholder="Το όνομά σας" required />
+          </div>
 
-          <label for="email">Email *</label>
-          <input type="email" id="email" name="email" value="{{ form_data.get('email', '') }}" required />
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" value="{{ form_data.get('email', '') }}" placeholder="example@email.com" required />
+          </div>
 
-          <label for="phone">Τηλέφωνο</label>
-          <input type="tel" id="phone" name="phone" value="{{ form_data.get('phone', '') }}" />
+          <div class="form-group">
+            <label for="phone">Τηλέφωνο</label>
+            <input type="tel" id="phone" name="phone" value="{{ form_data.get('phone', '') }}" placeholder="+30 123 456 7890" />
+            <small>Προαιρετικό - για πιο γρήγορη επικοινωνία</small>
+          </div>
 
-          <label for="message">Περιγραφή έργου *</label>
-          <textarea id="message" name="message" rows="5" required>{{ form_data.get('message', '') }}</textarea>
+          <div class="form-group">
+            <label for="message">Περιγραφή έργου *</label>
+            <textarea id="message" name="message" rows="6" placeholder="Περιγράψτε μας το έργο σας: τύπος χώρου, μέγεθος, ειδικές απαιτήσεις..." required>{{ form_data.get('message', '') }}</textarea>
+          </div>
 
-          <button class="btn" type="submit">Αποστολή</button>
+          <button class="btn" type="submit">Αποστολή μηνύματος</button>
         </form>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -43,12 +57,29 @@
 
       <div class="contact-info">
         <h2>Στοιχεία επικοινωνίας</h2>
-        <p>Είμαστε διαθέσιμοι για έργα σε Αθήνα, επαρχία καθώς και νησιά της Ελλάδας κατόπιν συνεννόησης.</p>
-        <ul>
-          <li>Email: <a href="mailto:info@chromapremium.gr">info@chromapremium.gr</a></li>
-          <li>Τηλ.: <span class="muted">+30 6943480472</span></li>
-          <li>Ωράριο: Δευτέρα – Σάββατο, 08:00 – 19:00</li>
-        </ul>
+        <p class="contact-intro">Είμαστε διαθέσιμοι για έργα σε Αθήνα, επαρχία καθώς και νησιά της Ελλάδας. Καλέστε μας ή στείλτε μας email για δωρεάν επίσκεψη και προσφορά.</p>
+        
+        <div class="contact-details">
+          <div class="contact-item">
+            <strong>Email:</strong>
+            <a href="mailto:info@chromapremium.gr">info@chromapremium.gr</a>
+          </div>
+          
+          <div class="contact-item">
+            <strong>Τηλέφωνο:</strong>
+            <a href="tel:+306943480472" class="phone-link">+30 6943480472</a>
+          </div>
+          
+          <div class="contact-item">
+            <strong>Ωράριο:</strong>
+            <span>Δευτέρα – Σάββατο<br>08:00 – 19:00</span>
+          </div>
+          
+          <div class="contact-item">
+            <strong>Περιοχή:</strong>
+            <span>Αθήνα, Επαρχία & Νησιά</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>

@@ -918,37 +918,101 @@ main:has(.page-hero) {
 .contact-grid {
   display: grid;
   gap: 3rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.contact-form-wrapper {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 249, 240, 0.95) 100%);
+  backdrop-filter: blur(8px);
+  padding: 2.5rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 0 3px rgba(255, 209, 102, 0.2);
+  border: 2px solid rgba(255, 209, 102, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-soft), var(--color-primary));
+}
+
+.contact-form-wrapper h2 {
+  color: var(--color-dark);
+  margin-bottom: 1rem;
+  text-shadow: none;
+}
+
+.form-intro {
+  color: var(--color-text);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  text-shadow: none;
 }
 
 form {
   display: grid;
-  gap: 0.75rem;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: grid;
+  gap: 0.5rem;
 }
 
 label {
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--color-dark);
+  font-size: 0.95rem;
 }
 
 input,
 textarea {
   width: 100%;
-  padding: 0.85rem 1rem;
+  padding: 0.95rem 1.2rem;
   border-radius: 12px;
-  border: 1px solid rgba(29, 53, 87, 0.2);
+  border: 2px solid rgba(29, 53, 87, 0.15);
   font: inherit;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--color-text);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-muted);
+  opacity: 0.7;
 }
 
 input:focus,
 textarea:focus {
   border-color: var(--color-accent);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
+  box-shadow: 0 0 0 4px rgba(239, 71, 111, 0.2), 0 4px 12px rgba(239, 71, 111, 0.1);
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+small {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-top: -0.25rem;
 }
 
 .flash-messages {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   display: grid;
   gap: 0.75rem;
 }
@@ -962,11 +1026,95 @@ textarea:focus {
 .flash.success {
   background: rgba(76, 175, 80, 0.15);
   color: #2e7d32;
+  border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
 .flash.error {
   background: rgba(229, 57, 53, 0.15);
   color: #b71c1c;
+  border: 1px solid rgba(229, 57, 53, 0.3);
+}
+
+.contact-info {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 248, 255, 0.95) 100%);
+  backdrop-filter: blur(8px);
+  padding: 2.5rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 0 3px rgba(69, 123, 157, 0.2);
+  border: 2px solid rgba(69, 123, 157, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-info::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-soft));
+}
+
+.contact-info h2 {
+  color: var(--color-dark);
+  margin-bottom: 1rem;
+  text-shadow: none;
+}
+
+.contact-intro {
+  color: var(--color-text);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  text-shadow: none;
+}
+
+.contact-details {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.contact-item {
+  display: grid;
+  gap: 0.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(69, 123, 157, 0.15);
+  transition: padding-left 0.2s ease;
+}
+
+.contact-item:hover {
+  padding-left: 0.5rem;
+  border-bottom-color: rgba(69, 123, 157, 0.3);
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.contact-item strong {
+  color: var(--color-dark);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.contact-item a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.contact-item a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+  transform: translateX(3px);
+}
+
+.contact-item span {
+  color: var(--color-text);
+  line-height: 1.6;
 }
 
 .contact-info ul {
@@ -1085,6 +1233,222 @@ textarea:focus {
   .banner-content {
     flex-direction: column;
     text-align: center;
+  }
+
+  .contact-form-wrapper,
+  .contact-info {
+    padding: 1.5rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  input,
+  textarea {
+    padding: 0.85rem 1rem;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Floating Contact Button (Mobile) */
+.floating-cta {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-soft));
+  color: #fff;
+  border-radius: 50px;
+  box-shadow: 0 8px 24px rgba(239, 71, 111, 0.4);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.floating-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(239, 71, 111, 0.5);
+}
+
+.floating-cta svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 900px) {
+  .floating-cta {
+    display: flex;
+  }
+}
+
+/* Clickable Phone Links */
+.phone-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.phone-link:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.site-footer .phone-link {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.site-footer .phone-link:hover {
+  color: #fff;
+}
+
+/* Service Icons */
+.service-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, rgba(69, 123, 157, 0.1), rgba(239, 71, 111, 0.1));
+  border-radius: 50%;
+  color: var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(15, 35, 60, 0.15);
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, rgba(69, 123, 157, 0.2), rgba(239, 71, 111, 0.2));
+  color: var(--color-accent);
+}
+
+/* Fade-in Animation Classes */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced Hover States */
+.usp-grid article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(15, 35, 60, 0.12);
+}
+
+.trust-grid article {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trust-grid article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(15, 35, 60, 0.15);
+}
+
+.timeline article {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(15, 35, 60, 0.12);
+}
+
+.gallery-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Testimonials */
+.testimonials {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+}
+
+.testimonial-cards article {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-cards article::before {
+  content: "\201C";
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  font-size: 4rem;
+  color: rgba(239, 71, 111, 0.15);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.testimonial-cards article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(13, 27, 42, 0.18);
+  border-left-width: 6px;
+}
+
+.testimonial-cards article p {
+  position: relative;
+  z-index: 1;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.testimonial-cards .author {
+  position: relative;
+  z-index: 1;
+  font-size: 0.95rem;
+}
+
+/* Image Optimization Hints */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Better Button Hover States */
+.btn:active,
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Smooth Scroll Animations */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    will-change: opacity, transform;
   }
 }
 

@@ -4,15 +4,70 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{% block title %}Chroma Premium{% endblock %}</title>
+    
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="{{ url_for('static', filename='css/main.css') }}" as="style" />
+    <link rel="preload" href="{{ url_for('static', filename='images/logo.png') }}" as="image" />
+    
+    <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-    <meta name="description" content="Chroma Premium - Επαγγελματικές υπηρεσίες βαφής για κατοικίες και επιχειρήσεις στην Ελλάδα." />
+    
+    <!-- Meta Description -->
+    <meta name="description" content="{% block meta_description %}Chroma Premium - Επαγγελματικές υπηρεσίες βαφής για κατοικίες και επιχειρήσεις στην Ελλάδα. 25+ αξιολογήσεις 5 αστέρων.{% endblock %}" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ request.url }}" />
+    <meta property="og:title" content="{% block og_title %}Chroma Premium{% endblock %}" />
+    <meta property="og:description" content="{% block og_description %}Επαγγελματικές υπηρεσίες βαφής για κατοικίες και επιχειρήσεις στην Ελλάδα. 25+ αξιολογήσεις 5 αστέρων.{% endblock %}" />
+    <meta property="og:image" content="{{ request.url_root }}{{ url_for('static', filename='images/logo.png') }}" />
+    <meta property="og:locale" content="el_GR" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{% block twitter_title %}Chroma Premium{% endblock %}" />
+    <meta name="twitter:description" content="{% block twitter_description %}Επαγγελματικές υπηρεσίες βαφής για κατοικίες και επιχειρήσεις στην Ελλάδα.{% endblock %}" />
+    <meta name="twitter:image" content="{{ request.url_root }}{{ url_for('static', filename='images/logo.png') }}" />
+    
+    <!-- Favicon -->
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Chroma Premium",
+      "image": "{{ request.url_root }}{{ url_for('static', filename='images/logo.png') }}",
+      "description": "Επαγγελματικές υπηρεσίες βαφής για κατοικίες και επιχειρήσεις στην Ελλάδα",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Αττική",
+        "addressCountry": "GR"
+      },
+      "telephone": "+306943480472",
+      "email": "info@chromapremium.gr",
+      "url": "{{ request.url_root }}",
+      "priceRange": "$$",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "25"
+      },
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61579609575609",
+        "https://www.instagram.com/chroma_premium/"
+      ]
+    }
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -44,6 +99,14 @@
       {% block content %}{% endblock %}
     </main>
 
+    <!-- Floating Contact Button (Mobile) -->
+    <a href="{{ url_for('main.contact') }}" class="floating-cta" aria-label="Επικοινωνία">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span>Επικοινωνία</span>
+    </a>
+
     <footer class="site-footer">
       <div class="container footer-content">
         <div>
@@ -52,7 +115,7 @@
         </div>
         <div>
           <p>Email: <a href="mailto:info@chromapremium.gr">info@chromapremium.gr</a></p>
-          <p>Τηλέφωνο: <span class="muted">+30 6943480472</span></p>
+          <p>Τηλέφωνο: <a href="tel:+306943480472" class="phone-link">+30 6943480472</a></p>
         </div>
         <div class="social-links">
           <p><strong>Ακολουθήστε μας</strong></p>

@@ -97,5 +97,63 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Scroll animations for fade-in elements
+  const fadeInElements = document.querySelectorAll(".fade-in");
+  
+  if (fadeInElements.length > 0 && "IntersectionObserver" in window) {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    fadeInElements.forEach((element) => {
+      observer.observe(element);
+    });
+  } else {
+    // Fallback: show all elements immediately if IntersectionObserver is not supported
+    fadeInElements.forEach((element) => {
+      element.classList.add("visible");
+    });
+  }
+
+  // Lazy load images with fade-in effect
+  const lazyImages = document.querySelectorAll("img[loading='lazy']");
+  
+  if (lazyImages.length > 0 && "IntersectionObserver" in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.complete) {
+            img.classList.add("loaded");
+          } else {
+            img.addEventListener("load", () => {
+              img.classList.add("loaded");
+            });
+          }
+          imageObserver.unobserve(img);
+        }
+      });
+    });
+
+    lazyImages.forEach((img) => {
+      imageObserver.observe(img);
+    });
+  } else {
+    // Fallback: show all images immediately
+    lazyImages.forEach((img) => {
+      img.classList.add("loaded");
+    });
+  }
 });
 
