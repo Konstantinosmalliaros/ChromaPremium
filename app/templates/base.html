@@ -23,6 +23,12 @@
     <!-- Meta Description -->
     <meta name="description" content="{% block meta_description %}Chroma Premium - Επαγγελματικές υπηρεσίες βαφής για κατοικίες και επιχειρήσεις στην Ελλάδα. 25+ αξιολογήσεις 5 αστέρων.{% endblock %}" />
     
+    <!-- Keywords -->
+    <meta name="keywords" content="{% block meta_keywords %}βαφή Αθήνα, βαφή κατοικίας, επαγγελματική βαφή Αττική, βαφή επιχειρήσεων, εποξειδικά δάπεδα, διακοσμητική βαφή, βαφή εσωτερικών χώρων, βαφή εξωτερικών χώρων, Chroma Premium{% endblock %}" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ request.url }}" />
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ request.url }}" />
@@ -51,7 +57,17 @@
       "address": {
         "@type": "PostalAddress",
         "addressRegion": "Αττική",
+        "addressLocality": "Αθήνα",
         "addressCountry": "GR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "37.9838",
+        "longitude": "23.7275"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Αθήνα"
       },
       "telephone": "+306943480472",
       "email": "info@chromapremium.gr",

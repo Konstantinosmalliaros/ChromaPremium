@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.chromapremium.gr/sitemap.xml
+
+# Disallow admin or private areas (if you add any in the future)
+# Disallow: /admin/
+# Disallow: /private/
+

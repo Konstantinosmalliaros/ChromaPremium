@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import os
 import re
-from flask import Blueprint, Request, current_app, flash, redirect, render_template, request, url_for
+from datetime import datetime
+from flask import Blueprint, Request, Response, current_app, flash, redirect, render_template, request, send_from_directory, url_for
 
 from .email_utils import EmailConfigurationError, send_contact_email
 
@@ -90,6 +91,51 @@ def contact() -> str:
                 return redirect(url_for("main.contact"))
 
     return render_template("contact.html", form_data=form_data)
+
+
+@main.route("/robots.txt")
+def robots_txt() -> Response:
+    """Serve robots.txt file."""
+    return send_from_directory(current_app.static_folder, "robots.txt", mimetype="text/plain")
+
+
+@main.route("/sitemap.xml", methods=["GET"])
+def sitemap() -> Response:
+    """Generate and serve sitemap.xml for SEO."""
+    # Ensure we use the correct base URL (handle both http and https)
+    base_url = request.url_root.rstrip("/")
+    # If on PythonAnywhere, ensure we use https
+    if "pythonanywhere.com" in base_url or "chromapremium.gr" in base_url:
+        base_url = base_url.replace("http://", "https://")
+    
+    # Define all pages with their priorities and change frequencies
+    pages = [
+        {"url": "", "priority": "1.0", "changefreq": "weekly"},
+        {"url": "/services", "priority": "0.9", "changefreq": "monthly"},
+        {"url": "/process", "priority": "0.8", "changefreq": "monthly"},
+        {"url": "/quality", "priority": "0.8", "changefreq": "monthly"},
+        {"url": "/gallery", "priority": "0.7", "changefreq": "weekly"},
+        {"url": "/contact", "priority": "0.8", "changefreq": "monthly"},
+    ]
+    
+    # Get last modification date (use current date as fallback)
+    lastmod = datetime.now().strftime("%Y-%m-%d")
+    
+    # Generate XML sitemap
+    sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    sitemap_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    
+    for page in pages:
+        sitemap_xml += f'  <url>\n'
+        sitemap_xml += f'    <loc>{base_url}{page["url"]}</loc>\n'
+        sitemap_xml += f'    <lastmod>{lastmod}</lastmod>\n'
+        sitemap_xml += f'    <changefreq>{page["changefreq"]}</changefreq>\n'
+        sitemap_xml += f'    <priority>{page["priority"]}</priority>\n'
+        sitemap_xml += f'  </url>\n'
+    
+    sitemap_xml += '</urlset>'
+    
+    return Response(sitemap_xml, mimetype="application/xml")
 
 
 def _extract_form_data(req: Request) -> dict[str, str]:
