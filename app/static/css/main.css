@@ -60,7 +60,7 @@ main {
 main:has(.page-hero) {
   background:
     linear-gradient(120deg, rgba(29, 53, 87, 0.6), rgba(69, 123, 157, 0.55)),
-    url("../images/photos/IMG_3237_.JPG") center/cover;
+    url("../images/photos/_IMG_3237_.JPG") center/cover;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -186,7 +186,7 @@ main:has(.page-hero) {
   padding: 6rem 0 4rem;
   background:
     linear-gradient(120deg, rgba(29, 53, 87, 0.6), rgba(69, 123, 157, 0.55)),
-    url("../images/photos/IMG_3237_.JPG") center/cover;
+    url("../images/photos/_IMG_3237_.JPG") center/cover;
   color: #fff;
   overflow: hidden;
   background-attachment: fixed;
@@ -373,7 +373,7 @@ main:has(.page-hero) {
   position: relative;
   background:
     linear-gradient(120deg, rgba(29, 53, 87, 0.6), rgba(69, 123, 157, 0.55)),
-    url("../images/photos/IMG_3237_.JPG") center/cover;
+    url("../images/photos/_IMG_3237_.JPG") center/cover;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -438,7 +438,7 @@ main:has(.page-hero) {
   padding: 4rem 0 1.5rem;
   background:
     linear-gradient(120deg, rgba(29, 53, 87, 0.6), rgba(69, 123, 157, 0.55)),
-    url("../images/photos/IMG_3237_.JPG") center/cover;
+    url("../images/photos/_IMG_3237_.JPG") center/cover;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -462,7 +462,7 @@ main:has(.page-hero) {
   padding: 4rem 0;
   background:
     linear-gradient(120deg, rgba(29, 53, 87, 0.6), rgba(69, 123, 157, 0.55)),
-    url("../images/photos/IMG_3237_.JPG") center/cover;
+    url("../images/photos/_IMG_3237_.JPG") center/cover;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -504,7 +504,7 @@ main:has(.page-hero) {
 .cta-banner {
   background:
     linear-gradient(120deg, rgba(29, 53, 87, 0.6), rgba(69, 123, 157, 0.55)),
-    url("../images/photos/IMG_3237_.JPG") center/cover;
+    url("../images/photos/_IMG_3237_.JPG") center/cover;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
