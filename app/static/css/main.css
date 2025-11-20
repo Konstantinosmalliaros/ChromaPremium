@@ -332,12 +332,6 @@ main:has(.page-hero) {
   color: var(--color-primary);
 }
 
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 1.8rem;
-}
 
 .btn,
 .btn-secondary {
@@ -456,6 +450,67 @@ main:has(.page-hero) {
   margin-bottom: 0;
   color: rgba(255, 255, 255, 0.95);
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.page-hero .hero-actions {
+  margin-top: 0;
+}
+
+/* Reduce gap for buttons section on home page */
+.section:has(.hero-actions) {
+  padding-top: 1.5rem;
+  padding-bottom: 4rem;
+}
+
+.hero-features-box {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 2.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  margin-top: 3rem;
+}
+
+.hero-features-box ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  line-height: 1.8;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-features-box li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.hero-features-box li:last-child {
+  margin-bottom: 0;
+}
+
+.hero-features-box li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #ffd166;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.hero-features-box li:hover {
+  transform: translateX(5px);
 }
 
 .section {
@@ -1449,6 +1504,153 @@ img[loading="lazy"].loaded {
 @media (prefers-reduced-motion: no-preference) {
   .fade-in {
     will-change: opacity, transform;
+  }
+}
+
+/* Mobile Optimizations for Home Page */
+@media (max-width: 768px) {
+  /* Disable fixed background on mobile for better performance */
+  main:has(.page-hero),
+  .page-hero,
+  .section {
+    background-attachment: scroll;
+  }
+
+  /* Page Hero - Mobile */
+  .page-hero {
+    padding: 3rem 0 2rem;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .page-hero p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Hero Features Box - Mobile */
+  .hero-features-box {
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-radius: 12px;
+  }
+
+  .hero-features-box ul {
+    line-height: 1.7;
+  }
+
+  .hero-features-box li {
+    padding-left: 1.25rem;
+    margin-bottom: 0.875rem;
+    font-size: 0.9rem;
+  }
+
+  .hero-features-box li::before {
+    font-size: 1em;
+    left: -0.1rem;
+  }
+
+  /* USP Grid - Mobile */
+  .usp-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .usp-grid article {
+    padding: 1.5rem;
+  }
+
+  .usp-grid article h2 {
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .usp-grid article p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Section Padding - Mobile */
+  .section {
+    padding: 2.5rem 0;
+  }
+
+  .section:has(.hero-actions) {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Hero Actions - Mobile */
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.875rem;
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+
+  .hero-actions .btn,
+  .hero-actions .btn-secondary {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    min-height: 48px; /* Touch-friendly size */
+  }
+
+  /* Container - Mobile */
+  .container.narrow {
+    padding: 0 1rem;
+  }
+}
+
+/* Smaller Mobile Devices */
+@media (max-width: 480px) {
+  .page-hero {
+    padding: 2.5rem 0 1.5rem;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .page-hero p {
+    font-size: 0.875rem;
+  }
+
+  .hero-features-box {
+    padding: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .hero-features-box li {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .usp-grid article {
+    padding: 1.25rem;
+  }
+
+  .usp-grid article h2 {
+    font-size: 1.2rem;
+  }
+
+  .usp-grid article p {
+    font-size: 0.875rem;
+  }
+
+  .section {
+    padding: 2rem 0;
+  }
+
+  .hero-actions .btn,
+  .hero-actions .btn-secondary {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
   }
 }
 
